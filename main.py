@@ -5,7 +5,7 @@ import sys
 
 from lebron import Lebron
 from settings import Settings
-from game_functions import load_image
+# from game_functions import load_image
 from event import EventGame
 
 def main():
