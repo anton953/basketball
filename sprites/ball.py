@@ -1,6 +1,6 @@
 import pygame
 
-from game_functions import load_image
+from game_object.game_functions import load_image
 
 
 class Ball(pygame.sprite.Sprite):
