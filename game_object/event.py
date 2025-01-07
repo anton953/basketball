@@ -1,14 +1,16 @@
 import pygame
-import sys
+
 
 class EventGame:
-    def __init__(self, sprite1):
+    def __init__(self, game, sprite1):
         self.sprite1 = sprite1
+        self.game = game
 
     def check_events(self):
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    sys.exit()
+                    self.game.playing = False
+                    self.game.running = False
 
                 elif event.type == pygame.KEYDOWN:
                    self.check_keydown_events(event, self.sprite1)
