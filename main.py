@@ -7,6 +7,9 @@ from lebron import Lebron
 from settings import Settings
 # from game_functions import load_image
 from event import EventGame
+from ball import Ball
+
+
 #test !
 def main():
     # cоздадим настройки
@@ -28,13 +31,16 @@ def main():
 
 
     # создадим спрайт
-    sprite = Lebron(screen, ai_settings)
+    lebron = Lebron(screen, ai_settings)
 
     # добавим спрайт в группу
-    all_sprites.add(sprite)
+    all_sprites.add(lebron)
+
+    ball = Ball(screen, ai_settings)
+    all_sprites.add(ball)
 
     # инициализация класса событий
-    event_game = EventGame(sprite)
+    event_game = EventGame(lebron)
 
     # настройка цыкла
     running = True
@@ -44,7 +50,7 @@ def main():
     while running:
         screen.blit(ai_settings.background_image, (0, 0))
 
-        sprite.update()
+        lebron.update()
         event_game.check_events()
 
         all_sprites.draw(screen)
