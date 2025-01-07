@@ -7,7 +7,7 @@ from lebron import Lebron
 from settings import Settings
 # from game_functions import load_image
 from event import EventGame
-
+#test !
 def main():
     # cоздадим настройки
     ai_settings = Settings()
