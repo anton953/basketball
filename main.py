@@ -50,8 +50,8 @@ def main():
     while running:
         screen.blit(ai_settings.background_image, (0, 0))
 
-        lebron.update()
         event_game.check_events()
+        all_sprites.update()
 
         all_sprites.draw(screen)
 

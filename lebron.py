@@ -16,8 +16,8 @@ class Lebron(pygame.sprite.Sprite):
         self.ai_settings = ai_settings
         self.screen = screen
 
-        self.rect.x = 10
-        self.rect.y = 10
+        self.rect.x = 350
+        self.rect.y = 350
         
         self.moving_forward = False
         self.moving_back = False
@@ -25,6 +25,8 @@ class Lebron(pygame.sprite.Sprite):
         self.moving_left = False
         
         self.speed = ai_settings.speed
+
+        self.ball_status = False
      
    
     def update(self):
