@@ -4,6 +4,7 @@ from sprites.lebron import Lebron
 from game_object.settings import Settings
 from game_object.event import EventGame
 from sprites.ball import Ball
+from game_object.button import Button
 
 class Game:
     def __init__(self):
@@ -22,6 +23,8 @@ class Game:
         self.clock = pygame.time.Clock()
         
         self.running = True
+
+        self.font = pygame.font.Font('data/font/Roboto-Bold.ttf', 32)
 
     def new(self):
         self.playing = True
@@ -68,4 +71,27 @@ class Game:
         pass
 
     def intro_screen(self):
-        pass
+        intro = True
+
+        title = self.font.render('Game', True, (0, 0, 0))
+        title_rect = title.get_rect(x=10, y=10)
+
+        play_button = Button(10, 50, 100, 50, ('white'), (0, 0, 0), 'play', 32)
+
+        while intro:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    intro = False
+                    self.running = False
+
+            mouse_pos = pygame.mouse.get_pos()
+            mouse_pressed = pygame.mouse.get_pressed()
+
+            if play_button.is_pressed(mouse_pos, mouse_pressed):
+                intro = False
+
+            self.screen.fill('blue')
+            self.screen.blit(title, title_rect)
+            self.screen.blit(play_button.image, play_button.rect)
+            self.clock.tick(self.ai_settings.fps)
+            pygame.display.update()

@@ -10,4 +10,4 @@ class Settings():
 
         self.speed = 2
         
-        self.background_image = pygame.image.load('data/bord2.png')
+        self.background_image = pygame.image.load('data/img/bord/bord2.png')
