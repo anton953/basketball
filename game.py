@@ -13,7 +13,7 @@ class Game:
         # инициализация окна
         pygame.init()
         self.size = self.width, self.height = self.ai_settings.screen_width, self.ai_settings.screen_height
-        self.screen = pygame.display.set_mode(self.size)   
+        self.screen = pygame.display.set_mode()   
         self.screen.blit(self.ai_settings.background_image, (0, 0))
         pygame.display.set_caption('Basketball')
         pygame.display.flip()
@@ -46,6 +46,7 @@ class Game:
         self.all_sprites.update()
 
     def draw(self):
+        self.screen.fill((0, 0, 0))
         self.screen.blit(self.ai_settings.background_image, (0, 0))
         self.all_sprites.draw(self.screen)
 
