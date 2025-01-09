@@ -14,7 +14,7 @@ class Game:
         # инициализация окна
         pygame.init()
         self.size = self.width, self.height = self.ai_settings.screen_width, self.ai_settings.screen_height
-        self.screen = pygame.display.set_mode()   
+        self.screen = pygame.display.set_mode(self.size)   
         self.screen.blit(self.ai_settings.background_image, (0, 0))
         pygame.display.set_caption('Basketball')
         pygame.display.flip()
@@ -25,6 +25,8 @@ class Game:
         self.running = True
 
         self.font = pygame.font.Font('data/font/Roboto-Bold.ttf', 32)
+
+
 
     def new(self):
         self.playing = True
@@ -51,6 +53,7 @@ class Game:
     def draw(self):
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.ai_settings.background_image, (0, 0))
+        
         self.all_sprites.draw(self.screen)
 
         self.clock.tick(self.ai_settings.fps)

@@ -34,6 +34,8 @@ class Lebron(pygame.sprite.Sprite):
 
         self.x_change = 0
         self.y_change = 0
+
+        self.fps_cnt = 0
      
    
     def update(self):
@@ -63,22 +65,51 @@ class Lebron(pygame.sprite.Sprite):
             self.facing = 'forward'
 
     def animate(self):
-        down_animations = [load_image("img/lebron/lebron_f_1.png").convert_alpha()]
+        down_animations = [load_image("img/lebron/lebron_animaton/lebron_f_1.png").convert_alpha(),
+                           load_image("img/lebron/lebron_animaton/lebron_f_2.png").convert_alpha()]
         
-        up_animations = [load_image("img/lebron/lebron_b_1.png").convert_alpha()]
+        up_animations = [load_image("img/lebron/lebron_animaton/lebron_b_1.png").convert_alpha(),
+                         load_image("img/lebron/lebron_animaton/lebron_b_2.png").convert_alpha()]
         
-        right_animations = [load_image("img/lebron/lebron_r_1.png").convert_alpha()]
+        right_animations = [load_image("img/lebron/lebron_animaton/lebron_r_1.png").convert_alpha(),
+                            load_image("img/lebron/lebron_animaton/lebron_r_2.png").convert_alpha()]
         
-        left_animations = [load_image("img/lebron/lebron_l_1.png").convert_alpha()]
+        left_animations = [load_image("img/lebron/lebron_animaton/lebron_l_1.png").convert_alpha(),
+                           load_image("img/lebron/lebron_animaton/lebron_l_2.png").convert_alpha()]
+
+        if self.fps_cnt == 60:
+                self.fps_cnt = 0
 
         if self.facing == 'down':
-            self.image = down_animations[0]
-        
+            if self.moving_back:
+                self.image = down_animations[0]
+            elif self.fps_cnt == 0:
+                self.image = down_animations[0]
+            elif self.fps_cnt == 50:
+                self.image = down_animations[1]
+
         elif self.facing == 'forward':
-            self.image = up_animations[0]
+            if self.moving_forward:
+                self.image = up_animations[0]
+            elif self.fps_cnt == 0:
+                self.image = up_animations[0]
+            elif self.fps_cnt == 50:
+                self.image = up_animations[1]
 
         elif self.facing == 'right':
-            self.image = right_animations[0]
+            if self.moving_right:
+                self.image = right_animations[0]
+            elif self.fps_cnt == 0:
+                self.image = right_animations[0]
+            elif self.fps_cnt == 50:
+                self.image = right_animations[1]
 
         elif self.facing == 'left':
-            self.image = left_animations[0]
+            if self.moving_left:
+                self.image = left_animations[0]
+            elif self.fps_cnt == 0:
+                self.image = left_animations[0]
+            elif self.fps_cnt == 50:
+                self.image = left_animations[1]
+
+        self.fps_cnt += 1
