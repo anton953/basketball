@@ -5,6 +5,7 @@ import sys
 from game_object.game_functions import load_image
 
 
+# спрайт леброн
 class Lebron(pygame.sprite.Sprite):
 
     def __init__(self, game, ai_settings, *group):

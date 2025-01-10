@@ -27,7 +27,7 @@ class Game:
         self.font = pygame.font.Font('data/font/Roboto-Bold.ttf', 32)
 
 
-
+    # создание спрайтов
     def new(self):
         self.playing = True
         # создадим группу, содержащую все спрайты
@@ -44,12 +44,15 @@ class Game:
         # инициализация класса событий
         self.event_game = EventGame(self, self.lebron)
 
+    # события игры
     def events(self):
         self.event_game.check_events()
 
+    # обновление экрана
     def update(self):
         self.all_sprites.update()
 
+    # отрисовка экрана
     def draw(self):
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.ai_settings.background_image, (0, 0))
@@ -60,9 +63,8 @@ class Game:
 
         pygame.display.flip()
 
-
+    # основной цыкл игры
     def main(self):
-        # основной цыкл игры
         while self.playing:
             self.events()
             self.update()
@@ -70,16 +72,18 @@ class Game:
         self.running = False
         pygame.quit()
 
+    # окончание игры
     def game_over(self):
         pass
 
+    #  вводный экран
     def intro_screen(self):
         intro = True
 
         title = self.font.render('Game', True, (0, 0, 0))
-        title_rect = title.get_rect(x=10, y=10)
+        title_rect = title.get_rect(x=self.width // 2 - 60, y=self.height // 2 - 50)
 
-        play_button = Button(10, 50, 100, 50, ('white'), (0, 0, 0), 'play', 32)
+        play_button = Button(self.width // 2 - 60, self.height // 2, 100, 50, ('white'), (0, 0, 0), 'play', 32)
 
         while intro:
             for event in pygame.event.get():

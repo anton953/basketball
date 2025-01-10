@@ -3,6 +3,7 @@ import pygame
 from game_object.game_functions import load_image
 
 
+# класс мяча
 class Ball(pygame.sprite.Sprite):
     image = load_image("img/ball/ball_2.png")
 

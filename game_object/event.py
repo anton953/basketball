@@ -1,6 +1,6 @@
 import pygame
 
-
+# класс событий
 class EventGame:
     def __init__(self, game, sprite1):
         self.sprite1 = sprite1
