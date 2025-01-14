@@ -22,3 +22,7 @@ class Ball(pygame.sprite.Sprite):
 
     def update(self):
         pass
+        # self.rect = self.rect.move(self.vx, self.vy)
+        # if pygame.sprite.spritecollideany(self, self.game.lebron):
+        #     self.rect.x = 400
+        #     self.rect.y = 400
