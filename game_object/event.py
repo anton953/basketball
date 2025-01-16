@@ -18,6 +18,11 @@ class EventGame:
                 elif event.type == pygame.KEYUP:
                    self.check_keyup_events(event, self.sprite1)
 
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    self.game.ball.mouving = True
+                    self.game.ball.cx = event.pos[0]
+                    self.game.ball.cy = event.pos[1]
+
     def check_keydown_events(self, event, sprite):
         if event.key == pygame.K_w:
             sprite.moving_forward = True

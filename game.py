@@ -102,3 +102,5 @@ class Game:
             self.screen.blit(play_button.image, play_button.rect)
             self.clock.tick(self.ai_settings.fps)
             pygame.display.update()
+
+
