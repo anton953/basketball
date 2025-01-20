@@ -2,7 +2,9 @@ import pygame
 import sys
 
 from game import Game
-#######
+
+# Egor branch
+ 
 def main():
     # создание обекта игры
     game = Game()
