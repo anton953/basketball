@@ -3,8 +3,9 @@ import sys
 
 from game import Game
 
-# Egor branch
- 
+
+Egor# Egor branch
+
 def main():
     # создание обекта игры
     game = Game()
