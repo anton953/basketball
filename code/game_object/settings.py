@@ -13,4 +13,4 @@ class Settings():
 
         self.speed_ball = 2
         
-        self.background_image = pygame.image.load('data/img/bord/bord2.png')
+        self.background_image = pygame.image.load('code/data/img/bord/bord2.png')

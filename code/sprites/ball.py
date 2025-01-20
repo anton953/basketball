@@ -6,7 +6,7 @@ import math
 
 # класс мяча
 class Ball(pygame.sprite.Sprite):
-    image = load_image("img/ball/ball_2.png")
+    image = load_image("ball/ball_2.png")
 
     def __init__(self, game, ai_settings, *group):
         # НЕОБХОДИМО вызвать конструктор родительского класса Sprite. 
