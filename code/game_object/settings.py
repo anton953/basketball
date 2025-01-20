@@ -10,5 +10,7 @@ class Settings():
         self.fps = 60
 
         self.speed = 2
+
+        self.speed_ball = 2
         
         self.background_image = pygame.image.load('data/img/bord/bord2.png')

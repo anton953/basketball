@@ -2,7 +2,7 @@ import pygame
 import sys
 
 from game import Game
-
+#######
 def main():
     # создание обекта игры
     game = Game()

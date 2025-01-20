@@ -37,6 +37,9 @@ class Lebron(pygame.sprite.Sprite):
         self.y_change = 0
 
         self.fps_cnt = 0
+
+        # включить или выключить анимацию
+        self.ball_animatin = False
      
    
     def update(self):
