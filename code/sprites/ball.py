@@ -30,22 +30,38 @@ class Ball(pygame.sprite.Sprite):
 
         self.speed = self.ai_settings.speed_ball
 
+        self.x_bufer = 0
+        self.y_bufer = 0
+
+        self.px = 0
+        self.py = 0
+
     def update(self):
         self.move()
 
     def mov(self):
-        return abs(self.cx - self.rect.x) // abs(self.cx - self.rect.x)
+        s = (abs(self.rect.x - self.cx) ** 2 + abs(self.rect.y - self.cy) ** 2) ** 0.5
+
+        self.px = abs(self.rect.x - self.cx) / (s / 2)
+        self.py = abs(self.rect.y - self.cy) / (s / 2)
     
     def move(self):
         if self.cx > self.rect.x:
-            self.rect.x += 1 * self.speed
+            if self.x_bufer > 1:
+                self.rect.x += 1 * self.speed
         elif self.cx < self.rect.x:
-            self.rect.x -= 1 * self.speed
-        
+            if self.x_bufer > 1:
+                self.rect.x -= 1 * self.speed
+
         if self.cy > self.rect.y:
-            self.rect.y += self.move_size * self.speed
+            if self.y_bufer > 1:
+                self.rect.y += self.move_size * self.speed 
         elif self.cy < self.rect.y:
-            self.rect.y -= self.move_size * self.speed
+            if self.y_bufer > 1:
+                self.rect.y -= self.move_size * self.speed
+        
+        self.x_bufer += self.px
+        self.y_bufer += self.py
 
 
 
