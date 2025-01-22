@@ -13,7 +13,7 @@ class Lebron(pygame.sprite.Sprite):
         # Это очень важно!!!
         super().__init__(*group)
 
-        self.image = load_image("img/lebron/pixel_lebron_all_1/sprite_lebron_500.png").convert_alpha()
+        self.image = load_image("lebron/pixel_lebron_all_1/sprite_lebron_500.png").convert_alpha()
         self.rect = self.image.get_rect()
 
         self.ai_settings = ai_settings
@@ -69,17 +69,17 @@ class Lebron(pygame.sprite.Sprite):
             self.facing = 'forward'
 
     def animate(self):
-        down_animations = [load_image("img/lebron/lebron_animaton_static/lebron_f_1.png").convert_alpha(),
-                           load_image("img/lebron/lebron_animaton_static/lebron_f_2.png").convert_alpha()]
+        down_animations = [load_image("lebron/lebron_animaton_static/lebron_f_1.png").convert_alpha(),
+                           load_image("lebron/lebron_animaton_static/lebron_f_2.png").convert_alpha()]
         
-        up_animations = [load_image("img/lebron/lebron_animaton_static/lebron_b_1.png").convert_alpha(),
-                         load_image("img/lebron/lebron_animaton_static/lebron_b_2.png").convert_alpha()]
+        up_animations = [load_image("lebron/lebron_animaton_static/lebron_b_1.png").convert_alpha(),
+                         load_image("lebron/lebron_animaton_static/lebron_b_2.png").convert_alpha()]
         
-        right_animations = [load_image("img/lebron/lebron_animaton_static/lebron_r_1.png").convert_alpha(),
-                            load_image("img/lebron/lebron_animaton_static/lebron_r_2.png").convert_alpha()]
+        right_animations = [load_image("lebron/lebron_animaton_static/lebron_r_1.png").convert_alpha(),
+                            load_image("lebron/lebron_animaton_static/lebron_r_2.png").convert_alpha()]
         
-        left_animations = [load_image("img/lebron/lebron_animaton_static/lebron_l_1.png").convert_alpha(),
-                           load_image("img/lebron/lebron_animaton_static/lebron_l_2.png").convert_alpha()]
+        left_animations = [load_image("lebron/lebron_animaton_static/lebron_l_1.png").convert_alpha(),
+                           load_image("lebron/lebron_animaton_static/lebron_l_2.png").convert_alpha()]
 
         if self.fps_cnt == 60:
                 self.fps_cnt = 0

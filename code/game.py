@@ -24,7 +24,7 @@ class Game:
         
         self.running = True
 
-        self.font = pygame.font.Font('data/font/Roboto-Bold.ttf', 32)
+        self.font = pygame.font.Font('code/data/font/Roboto-Bold.ttf', 32)
 
 
     # создание спрайтов
