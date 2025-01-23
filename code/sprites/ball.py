@@ -40,25 +40,34 @@ class Ball(pygame.sprite.Sprite):
         self.move()
 
     def mov(self):
-        s = (abs(self.rect.x - self.cx) ** 2 + abs(self.rect.y - self.cy) ** 2) ** 0.5
+        x = abs(self.rect.x - self.cx)
+        y = abs(self.rect.y - self.cy)
 
-        self.px = abs(self.rect.x - self.cx) / (s / 2)
-        self.py = abs(self.rect.y - self.cy) / (s / 2)
+        s = (x ** 2 + y ** 2) ** 0.5
+
+        self.px = round(x / s * self.speed, 3)
+        self.py = round(y / s * self.speed, 3)
+
+        print(self.px, self.py)
     
     def move(self):
         if self.cx > self.rect.x:
-            if self.x_bufer > 1:
-                self.rect.x += 1 * self.speed
+            if self.x_bufer > 2:
+                self.rect.x += 1
+                self.x_bufer -= 1
         elif self.cx < self.rect.x:
-            if self.x_bufer > 1:
-                self.rect.x -= 1 * self.speed
+            if self.x_bufer > 2:
+                self.rect.x -= 1
+                self.x_bufer -= 1
 
         if self.cy > self.rect.y:
-            if self.y_bufer > 1:
-                self.rect.y += self.move_size * self.speed 
+            if self.y_bufer > 2:
+                self.rect.y += 1
+                self.y_bufer -= 1
         elif self.cy < self.rect.y:
-            if self.y_bufer > 1:
-                self.rect.y -= self.move_size * self.speed
+            if self.y_bufer > 2:
+                self.rect.y -= 1
+                self.y_bufer -= 1
         
         self.x_bufer += self.px
         self.y_bufer += self.py
