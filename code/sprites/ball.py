@@ -21,8 +21,8 @@ class Ball(pygame.sprite.Sprite):
         self.rect.x = 15
         self.rect.y = 15
 
-        self.cx = 20
-        self.cy = 20
+        self.cx = 100
+        self.cy = 100
 
         self.mouving = True
 
@@ -39,38 +39,53 @@ class Ball(pygame.sprite.Sprite):
     def update(self):
         self.move()
 
-    def mov(self):
+    def calculation_cor(self):
+        self.x_bufer = 0
+        self.y_bufer = 0
+
         x = abs(self.rect.x - self.cx)
         y = abs(self.rect.y - self.cy)
 
         s = (x ** 2 + y ** 2) ** 0.5
+        if s == 0:
+            self.mouving = False
+            return None
 
         self.px = round(x / s * self.speed, 3)
         self.py = round(y / s * self.speed, 3)
 
-        print(self.px, self.py)
+        print(self.px, self.py, self.px, self.py)
     
     def move(self):
-        if self.cx > self.rect.x:
-            if self.x_bufer > 2:
-                self.rect.x += 1
-                self.x_bufer -= 1
-        elif self.cx < self.rect.x:
-            if self.x_bufer > 2:
-                self.rect.x -= 1
-                self.x_bufer -= 1
+        if self.mouving:
+            if self.cx > self.rect.x:
+                if self.x_bufer >= 1:
+                    self.rect.x += int(self.x_bufer)
+                    self.x_bufer -= int(self.x_bufer)
+            elif self.cx < self.rect.x:
+                if self.x_bufer >= 1:    
+                    self.rect.x -= int(self.x_bufer)
+                    self.x_bufer -= int(self.x_bufer)
 
-        if self.cy > self.rect.y:
-            if self.y_bufer > 2:
-                self.rect.y += 1
-                self.y_bufer -= 1
-        elif self.cy < self.rect.y:
-            if self.y_bufer > 2:
-                self.rect.y -= 1
-                self.y_bufer -= 1
-        
-        self.x_bufer += self.px
-        self.y_bufer += self.py
+            if self.cy > self.rect.y:
+                if self.y_bufer >= 1:
+                    self.rect.y += int(self.y_bufer)
+                    self.y_bufer -= int(self.y_bufer)
+            elif self.cy < self.rect.y:
+                if self.y_bufer >= 1:
+                    self.rect.y -= int(self.y_bufer)
+                    self.y_bufer -= int(self.y_bufer)
+            
+            if self.rect.x == self.cx and self.rect.y == self.cy:
+                self.mouving = False
+            elif (self.cx + self.x_bufer) > self.rect.x > (self.cx - self.x_bufer) and (self.cy + self.y_bufer) > self.rect.y > (self.cy - self.y_bufer):
+                self.rect.x = self.cx
+                self.rect.y = self.cy
+
+                self.mouving = False
+            
+            self.x_bufer += self.px
+            self.y_bufer += self.py
 
 
 

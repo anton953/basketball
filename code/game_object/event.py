@@ -22,7 +22,7 @@ class EventGame:
                     self.game.ball.mouving = True
                     self.game.ball.cx = event.pos[0]
                     self.game.ball.cy = event.pos[1]
-                    self.game.ball.move_size = self.game.ball.mov()
+                    self.game.ball.calculation_cor()
 
     def check_keydown_events(self, event, sprite):
         if event.key == pygame.K_w:
