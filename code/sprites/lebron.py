@@ -31,7 +31,7 @@ class Lebron(pygame.sprite.Sprite):
 
         self.ball_status = False
 
-        self.facing = 'down'
+        self.facing = 'back'
 
         self.x_change = 0
         self.y_change = 0
@@ -63,10 +63,10 @@ class Lebron(pygame.sprite.Sprite):
     
         if self.moving_back and self.rect.bottom < self.game.screen.get_height():
             self.y_change += self.speed
-            self.facing = 'down'
+            self.facing = 'back'
         if self.moving_forward and self.rect.top > 0:
             self.y_change -= self.speed
-            self.facing = 'forward'
+            self.facing = 'front'
 
     def animate(self):
         down_animations = [load_image("lebron/lebron_animaton_static/lebron_f_1.png").convert_alpha(),
@@ -84,7 +84,7 @@ class Lebron(pygame.sprite.Sprite):
         if self.fps_cnt == 60:
                 self.fps_cnt = 0
 
-        if self.facing == 'down':
+        if self.facing == 'back':
             if self.moving_back:
                 self.image = down_animations[0]
             elif self.fps_cnt == 0:
@@ -92,7 +92,7 @@ class Lebron(pygame.sprite.Sprite):
             elif self.fps_cnt == 50:
                 self.image = down_animations[1]
 
-        elif self.facing == 'forward':
+        elif self.facing == 'front':
             if self.moving_forward:
                 self.image = up_animations[0]
             elif self.fps_cnt == 0:
