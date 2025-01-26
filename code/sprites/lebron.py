@@ -13,7 +13,7 @@ class Lebron(pygame.sprite.Sprite):
         # Это очень важно!!!
         super().__init__(*group)
 
-        self.image = load_image("lebron/pixel_lebron_all_1/sprite_lebron_500.png").convert_alpha()
+        self.image = load_image("lebron/lebron_animaton_static/lebron_b_1.png").convert_alpha()
         self.rect = self.image.get_rect()
 
         self.ai_settings = ai_settings

@@ -42,7 +42,7 @@ class Game:
         self.all_sprites.add(self.ball)
 
         # инициализация класса событий
-        self.event_game = EventGame(self, self.lebron)
+        self.event_game = EventGame(self)
 
     # события игры
     def events(self):

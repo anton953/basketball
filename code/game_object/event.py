@@ -2,8 +2,7 @@ import pygame
 
 # класс событий
 class EventGame:
-    def __init__(self, game, sprite1):
-        self.sprite1 = sprite1
+    def __init__(self, game):
         self.game = game
 
     def check_events(self):
@@ -13,34 +12,43 @@ class EventGame:
                     self.game.running = False
 
                 elif event.type == pygame.KEYDOWN:
-                   self.check_keydown_events(event, self.sprite1)
+                   self.check_keydown_events(event)
                    
                 elif event.type == pygame.KEYUP:
-                   self.check_keyup_events(event, self.sprite1)
+                   self.check_keyup_events(event)
 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    self.game.ball.mouving = True
-                    self.game.ball.cx = event.pos[0]
-                    self.game.ball.cy = event.pos[1]
-                    self.game.ball.calculation_cor()
+                    # self.game.ball.mouving = True
+                    # self.game.ball.cx = event.pos[0]
+                    # self.game.ball.cy = event.pos[1]
+                    print(event.pos)
 
-    def check_keydown_events(self, event, sprite):
+    def check_keydown_events(self, event):
         if event.key == pygame.K_w:
-            sprite.moving_forward = True
+            self.game.lebron.moving_forward = True
         if event.key == pygame.K_s:
-            sprite.moving_back = True
+            self.game.lebron.moving_back = True
         if event.key == pygame.K_d:
-            sprite.moving_right = True
+            self.game.lebron.moving_right = True
         if event.key == pygame.K_a:
-            sprite.moving_left = True
+            self.game.lebron.moving_left = True
 
-    def check_keyup_events(self, event, sprite):
+        if event.key == pygame.K_e and self.game.ball.moving == False:
+            self.game.ball.rect.x = self.game.lebron.rect.x
+            self.game.ball.rect.y = self.game.lebron.rect.y
+            self.game.lebron.ball_animatin = False
+            self.game.ball.moving = True
+            
+            self.game.ball.calculation_cor()
+
+
+    def check_keyup_events(self, event):
         if event.key == pygame.K_w:
-            sprite.moving_forward = False
+            self.game.lebron.moving_forward = False
         if event.key == pygame.K_s:
-            sprite.moving_back = False
+            self.game.lebron.moving_back = False
         if event.key == pygame.K_d:
-            sprite.moving_right = False
+            self.game.lebron.moving_right = False
         if event.key == pygame.K_a:
-            sprite.moving_left = False
+            self.game.lebron.moving_left = False
 
