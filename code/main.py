@@ -3,7 +3,7 @@ import sys
 
 from game import Game
 
-# main branch
+# main branch this is test
 
 def main():
     # создание обекта игры
