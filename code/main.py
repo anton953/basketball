@@ -15,7 +15,7 @@ def main():
     # создание спрайтов
     game.new()
 
-    # основной цыкл
+    # основной цикл
     while game.running:
         game.main()
         game.game_over()
