@@ -84,7 +84,7 @@ class Lebron(pygame.sprite.Sprite):
         else:
             self.image = load_image(f'lebron/lebron_animaton_static/lebron_{self.facing}_{1 if 50 > self.fps_cnt >= 0 else 2}.png')
 
-            self.fps_cnt += 1
+        self.fps_cnt += 1
 
     def check_move(self):
         if self.moving_forward or self.moving_back or self.moving_left or self.moving_right:
