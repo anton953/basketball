@@ -86,14 +86,14 @@ class Lebron(pygame.sprite.Sprite):
 
             self.fps_cnt += 1
 
-        def check_move(self):
-            if self.moving_forward or self.moving_back or self.moving_left or self.moving_right:
-                return True
-            return False
+    def check_move(self):
+        if self.moving_forward or self.moving_back or self.moving_left or self.moving_right:
+            return True
+        return False
 
-        def ball_anim(self):
-            if self.fps_cnt % 10 == 0:
-                self.ball_cnt += 1
+    def ball_anim(self):
+        if self.fps_cnt % 10 == 0:
+            self.ball_cnt += 1
 
-            if self.ball_cnt == 5:
-                self.ball_cnt = 1
+        if self.ball_cnt == 5:
+            self.ball_cnt = 1
