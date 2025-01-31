@@ -82,11 +82,7 @@ class Lebron(pygame.sprite.Sprite):
             self.ball_anim()
             self.image = load_image(f'lebron/lebron_animaton_ball/lebron_ball_{self.facing}_{self.ball_cnt}.png')
         else:
-            self.image = load_image(f'lebron/lebron_animaton_static/lebron_{self.facing}_{'
-            1
-            ' if 50 > self.fps_cnt >= 0 else '
-            2
-            '}.png')
+            self.image = load_image(f'lebron/lebron_animaton_static/lebron_{self.facing}_{1 if 50 > self.fps_cnt >= 0 else 2}.png')
 
             self.fps_cnt += 1
 
