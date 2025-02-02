@@ -37,7 +37,7 @@ class EventGame:
         if event.key == pygame.K_e and self.game.ball.moving == False:
             self.game.ball.rect.x = self.game.lebron.rect.x
             self.game.ball.rect.y = self.game.lebron.rect.y
-            self.game.lebron.ball_animatin = False
+            self.game.lebron.ball_status = False
             self.game.ball.moving = True
 
             self.game.ball.calculation_cor()

@@ -29,7 +29,6 @@ class Lebron(pygame.sprite.Sprite):
 
         self.speed = ai_settings.speed
 
-        self.ball_status = False
 
         self.facing = 'b'
 
@@ -41,7 +40,7 @@ class Lebron(pygame.sprite.Sprite):
         self.ball_cnt = 1
 
         # включить или выключить анимацию
-        self.ball_animatin = False
+        self.ball_status = False
 
     def update(self):
         self.movement()
