@@ -3,7 +3,7 @@ import sys
 
 from game import Game
 
-# main branch
+# main branch this is test
 
 def main():
     # создание обекта игры
@@ -15,7 +15,7 @@ def main():
     # создание спрайтов
     game.new()
 
-    # основной цыкл
+    # основной цикл
     while game.running:
         game.main()
         game.game_over()

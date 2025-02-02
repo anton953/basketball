@@ -35,4 +35,9 @@ def movement(x, y, s, cx, cy):
         res[1] = y - res[1]
 
     return res
-
+'''
+def texts(score):
+   font = pygame.font.Font(None,30)
+   scoretext = font.render("Score:"+str(score), 1,(255,255,255))
+   screen.blit(scoretext, (500, 457))
+'''
