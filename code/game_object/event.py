@@ -34,7 +34,7 @@ class EventGame:
         if event.key == pygame.K_a:
             self.game.lebron.moving_left = True
 
-        if event.key == pygame.K_e and self.game.ball.moving == False:
+        if event.key == pygame.K_e and self.game.ball.moving == False and self.game.lebron.ball_status:
             self.game.ball.rect.x = self.game.lebron.rect.x
             self.game.ball.rect.y = self.game.lebron.rect.y
             self.game.lebron.ball_status = False
