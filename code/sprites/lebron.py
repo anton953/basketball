@@ -40,9 +40,12 @@ class Lebron(pygame.sprite.Sprite):
         self.ball_cnt = 1
 
         # включить или выключить анимацию
-        self.ball_status = False
+        self.ball_status = True
 
     def update(self):
+        if pygame.Rect.colliderect(self.rect, self.game.ball.rect) and self.game.ball.moving == False:
+            self.ball_status = True
+            self.game.ball.remove(self.game.all_sprites)
         self.movement()
 
         self.rect.x += self.x_change
@@ -96,3 +99,4 @@ class Lebron(pygame.sprite.Sprite):
 
         if self.ball_cnt == 5:
             self.ball_cnt = 1
+

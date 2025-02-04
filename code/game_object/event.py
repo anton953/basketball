@@ -35,17 +35,16 @@ class EventGame:
             self.game.lebron.moving_left = True
 
         if event.key == pygame.K_e and self.game.ball.moving == False and self.game.lebron.ball_status:
+            self.game.all_sprites.add(self.game.ball)
+
             self.game.ball.rect.x = self.game.lebron.rect.x
             self.game.ball.rect.y = self.game.lebron.rect.y
+
+
             self.game.lebron.ball_status = False
             self.game.ball.moving = True
 
             self.game.ball.calculation_cor()
-
-        if event.key == pygame.K_q:
-            self.game.lebron.ball_status = True
-        if event.key == pygame.K_r:
-            self.game.lebron.ball_status = False
 
     def check_keyup_events(self, event):
         if event.key == pygame.K_w:

@@ -54,6 +54,7 @@ class Ball(pygame.sprite.Sprite):
 
         s = (x ** 2 + y ** 2) ** 0.5
         if s == 0:
+            print('stop')
             self.moving = False
             return None
 

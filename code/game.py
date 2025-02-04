@@ -26,7 +26,7 @@ class Game:
 
         self.font = pygame.font.Font('code/data/font/Roboto-Bold.ttf', 32)
 
-        self.count = '0:0'
+        self.count = 'fd'
 
 
     # создание спрайтов
@@ -41,7 +41,6 @@ class Game:
 
         # создадим ball
         self.ball = Ball(self, self.ai_settings)
-        self.all_sprites.add(self.ball)
 
         # инициализация класса событий
         self.event_game = EventGame(self)
@@ -58,10 +57,11 @@ class Game:
     def draw(self):
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.ai_settings.background_image, (0, 0))
-        
+
         title = self.font.render(self.count, True, (255, 255, 255))
         title_rect = title.get_rect(x=374, y=575)
         self.screen.blit(title, title_rect)
+        
         self.all_sprites.draw(self.screen)
 
         self.clock.tick(self.ai_settings.fps)
@@ -107,5 +107,6 @@ class Game:
             self.screen.blit(play_button.image, play_button.rect)
             self.clock.tick(self.ai_settings.fps)
             pygame.display.update()
+
 
 
