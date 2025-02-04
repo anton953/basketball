@@ -16,4 +16,6 @@ class Settings():
         self.cx = 382
         self.cy = 86
 
+        self.max_score = 3
+
         self.background_image = pygame.image.load('code/data/img/bord/bord_lay.png')

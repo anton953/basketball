@@ -97,14 +97,16 @@ class Ball(pygame.sprite.Sprite):
                     self.y_bufer -= int(self.y_bufer)
                     self.moving_y = False
             
-            if self.rect.x == self.cx and self.rect.y == self.cy:
+            if self.rect.x == self.cx and self.rect.y == self.cy and self.moving:
                 self.moving = False
+                self.game.upp_score('a')
 
-            elif self.direction_x != self.moving_x or self.direction_y != self.moving_y:
+            elif (self.direction_x != self.moving_x or self.direction_y != self.moving_y) and self.moving:
                 self.rect.x = self.cx
                 self.rect.y = self.cy
 
                 self.moving = False
+                self.game.upp_score('a')
             
             self.x_bufer += self.px
             self.y_bufer += self.py

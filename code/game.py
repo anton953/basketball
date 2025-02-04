@@ -26,7 +26,8 @@ class Game:
 
         self.font = pygame.font.Font('code/data/font/Roboto-Bold.ttf', 32)
 
-        self.count = 'fd'
+        self.count_a = 0
+        self.count_b = 0
 
 
     # создание спрайтов
@@ -58,9 +59,9 @@ class Game:
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.ai_settings.background_image, (0, 0))
 
-        title = self.font.render(self.count, True, (255, 255, 255))
-        title_rect = title.get_rect(x=374, y=575)
-        self.screen.blit(title, title_rect)
+        score = self.font.render(f'{self.count_a}:{self.count_b}', True, (255, 255, 255))
+        score_rect = score.get_rect(x=374, y=575)
+        self.screen.blit(score, score_rect)
         
         self.all_sprites.draw(self.screen)
 
@@ -108,5 +109,13 @@ class Game:
             self.clock.tick(self.ai_settings.fps)
             pygame.display.update()
 
+    def upp_score(self, player):
+        if player == 'a':
+            self.count_a += 1
+        elif player == 'b':
+            self.count_b += 1
 
+        if self.count_a == self.ai_settings.max_score or self.count_b == self.ai_settings.max_score:
+            print('ff')
+            self.playing = False
 
