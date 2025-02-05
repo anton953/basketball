@@ -9,7 +9,7 @@ class Settings():
         self.bg_color = (0, 0, 0)
         self.fps = 60
 
-        self.speed = 2
+        self.speed = 3
 
         self.speed_ball = 4
 
@@ -17,5 +17,7 @@ class Settings():
         self.cy = 86
 
         self.max_score = 3
+
+        self.ball_speed = 2
 
         self.background_image = pygame.image.load('code/data/img/bord/bord_lay.png')

@@ -1,10 +1,12 @@
 import pygame
 
 from sprites.lebron import Lebron
+from sprites.zak import Zak
 from game_object.settings import Settings
 from game_object.event import EventGame
 from sprites.ball import Ball
 from game_object.button import Button
+
 
 class Game:
     def __init__(self):
@@ -39,6 +41,11 @@ class Game:
         # создадим lebron
         self.lebron = Lebron(self, self.ai_settings)
         self.all_sprites.add(self.lebron)
+
+        self.zak = Zak(self, self.ai_settings)
+        self.all_sprites.add(self.zak)
+
+        print(self.lebron.rect)
 
         # создадим ball
         self.ball = Ball(self, self.ai_settings)
