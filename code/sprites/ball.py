@@ -41,6 +41,8 @@ class Ball(pygame.sprite.Sprite):
 
         self.moving_x = True
         self.moving_y = True
+        
+        self.ownership = 'a'
 
     def update(self):
         self.move()
@@ -54,6 +56,7 @@ class Ball(pygame.sprite.Sprite):
 
         s = (x ** 2 + y ** 2) ** 0.5
         if s == 0:
+            print('stop')
             self.moving = False
             return None
 
@@ -96,17 +99,19 @@ class Ball(pygame.sprite.Sprite):
                     self.y_bufer -= int(self.y_bufer)
                     self.moving_y = False
             
-            if self.rect.x == self.cx and self.rect.y == self.cy:
+            if self.rect.x == self.cx and self.rect.y == self.cy and self.moving:
                 self.moving = False
+                self.game.upp_score(self.ownership)
 
-            elif self.direction_x != self.moving_x or self.direction_y != self.moving_y:
+            elif (self.direction_x != self.moving_x or self.direction_y != self.moving_y) and self.moving:
                 self.rect.x = self.cx
                 self.rect.y = self.cy
 
                 self.moving = False
+                self.game.upp_score(self.ownership)
             
-            self.x_bufer += self.px
-            self.y_bufer += self.py
+            self.x_bufer += self.px * self.game.ai_settings.ball_speed
+            self.y_bufer += self.py * self.game.ai_settings.ball_speed
 
 
 

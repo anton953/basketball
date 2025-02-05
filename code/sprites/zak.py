@@ -6,21 +6,21 @@ from game_object.game_functions import load_image
 
 
 # спрайт леброн
-class Lebron(pygame.sprite.Sprite):
+class Zak(pygame.sprite.Sprite):
 
     def __init__(self, game, ai_settings, *group):
         # НЕОБХОДИМО вызвать конструктор родительского класса Sprite.
         # Это очень важно!!!
         super().__init__(*group)
 
-        self.image = load_image("lebron/lebron_animaton_static/lebron_b_1.png").convert_alpha()
+        self.image = load_image("zak/zak_animaton_static/zak_b_1.png").convert_alpha()
         self.rect = self.image.get_rect()
 
         self.ai_settings = ai_settings
         self.game = game
 
-        self.rect.x = 350
-        self.rect.y = 350
+        self.rect.x = 200
+        self.rect.y = 200
 
         self.moving_forward = False
         self.moving_back = False
@@ -40,13 +40,12 @@ class Lebron(pygame.sprite.Sprite):
         self.ball_cnt = 1
 
         # включить или выключить анимацию
-        self.ball_status = False
+        self.ball_status = True
 
         self.mask = pygame.mask.from_surface(self.image)
 
-
     def update(self):
-        if pygame.Rect.colliderect(self.rect, self.game.ball.rect) and self.game.ball.moving == False and self.game.zak.ball_status == False:
+        if pygame.Rect.colliderect(self.rect, self.game.ball.rect) and self.game.ball.moving == False and self.game.lebron.ball_status == False:
             self.ball_status = True
             self.game.ball.remove(self.game.all_sprites)
         self.movement()
@@ -55,13 +54,15 @@ class Lebron(pygame.sprite.Sprite):
 
         self.rect.x += self.x_change
         self.rect.y += self.y_change
-        if pygame.sprite.pygame.sprite.collide_mask(self, self.game.zak) and self.check_move():
+        if pygame.sprite.pygame.sprite.collide_mask(self, self.game.lebron) and self.check_move():
             # self.rect = old_rect
             self.rect.x -= self.x_change
             self.rect.y -= self.y_change
 
-            self.game.zak.rect.x += self.x_change
-            self.game.zak.rect.y += self.y_change
+            self.game.lebron.rect.x += self.x_change
+            self.game.lebron.rect.y += self.y_change
+        
+
 
         self.x_change = 0
         self.y_change = 0
@@ -89,14 +90,14 @@ class Lebron(pygame.sprite.Sprite):
 
         if self.check_move() and self.ball_status:
             self.ball_anim()
-            self.image = load_image(f'lebron/lebron_animaton_ball/lebron_ball_{self.facing}_{self.ball_cnt}.png')
+            self.image = load_image(f'zak/zak_animaton_ball/zak_{self.facing}_{self.ball_cnt}.png')
         elif self.check_move():
-            self.image = load_image(f'lebron/lebron_animaton_static/lebron_{self.facing}_1.png')
+            self.image = load_image(f'zak/zak_animaton_static/zak_{self.facing}_1.png')
         elif self.ball_status:
             self.ball_anim()
-            self.image = load_image(f'lebron/lebron_animaton_ball/lebron_ball_{self.facing}_{self.ball_cnt}.png')
+            self.image = load_image(f'zak/zak_animaton_ball/zak_{self.facing}_{self.ball_cnt}.png')
         else:
-            self.image = load_image(f'lebron/lebron_animaton_static/lebron_{self.facing}_{1 if 50 > self.fps_cnt >= 0 else 2}.png')
+            self.image = load_image(f'zak/zak_animaton_static/zak_{self.facing}_{1 if 50 > self.fps_cnt >= 0 else 2}.png')
 
         self.fps_cnt += 1
 

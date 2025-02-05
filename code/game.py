@@ -1,10 +1,12 @@
 import pygame
 
 from sprites.lebron import Lebron
+from sprites.zak import Zak
 from game_object.settings import Settings
 from game_object.event import EventGame
 from sprites.ball import Ball
 from game_object.button import Button
+
 
 class Game:
     def __init__(self):
@@ -26,7 +28,8 @@ class Game:
 
         self.font = pygame.font.Font('code/data/font/Roboto-Bold.ttf', 32)
 
-        self.count = '0:0'
+        self.count_a = 0
+        self.count_b = 0
 
 
     # создание спрайтов
@@ -39,9 +42,13 @@ class Game:
         self.lebron = Lebron(self, self.ai_settings)
         self.all_sprites.add(self.lebron)
 
+        self.zak = Zak(self, self.ai_settings)
+        self.all_sprites.add(self.zak)
+
+        print(self.lebron.rect)
+
         # создадим ball
         self.ball = Ball(self, self.ai_settings)
-        self.all_sprites.add(self.ball)
 
         # инициализация класса событий
         self.event_game = EventGame(self)
@@ -58,10 +65,11 @@ class Game:
     def draw(self):
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.ai_settings.background_image, (0, 0))
+
+        score = self.font.render(f'{self.count_a}:{self.count_b}', True, (255, 255, 255))
+        score_rect = score.get_rect(x=374, y=575)
+        self.screen.blit(score, score_rect)
         
-        title = self.font.render(self.count, True, (255, 255, 255))
-        title_rect = title.get_rect(x=374, y=575)
-        self.screen.blit(title, title_rect)
         self.all_sprites.draw(self.screen)
 
         self.clock.tick(self.ai_settings.fps)
@@ -108,4 +116,13 @@ class Game:
             self.clock.tick(self.ai_settings.fps)
             pygame.display.update()
 
+    def upp_score(self, player):
+        if player == 'a':
+            self.count_a += 1
+        elif player == 'b':
+            self.count_b += 1
+
+        if self.count_a == self.ai_settings.max_score or self.count_b == self.ai_settings.max_score:
+            print('ff')
+            self.playing = False
 
