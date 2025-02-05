@@ -41,3 +41,8 @@ def texts(score):
    scoretext = font.render("Score:"+str(score), 1,(255,255,255))
    screen.blit(scoretext, (500, 457))
 '''
+def colo(name):
+    if name == 'L':
+        return (85, 37, 130)
+    if name == 'Z':
+        return 	(6, 25, 34)

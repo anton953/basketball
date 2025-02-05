@@ -40,7 +40,7 @@ class EventGame:
 
             self.game.lebron.ball_status = False
             self.game.ball.moving = True
-            self.game.ball.ownership = 'a'
+            self.game.ball.ownership = 'L'
 
             self.game.ball.calculation_cor()
 
@@ -63,7 +63,7 @@ class EventGame:
 
             self.game.zak.ball_status = False
             self.game.ball.moving = True
-            self.game.ball.ownership = 'b'
+            self.game.ball.ownership = 'Z'
 
             self.game.ball.calculation_cor()
 

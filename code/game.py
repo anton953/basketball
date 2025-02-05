@@ -6,6 +6,7 @@ from game_object.settings import Settings
 from game_object.event import EventGame
 from sprites.ball import Ball
 from game_object.button import Button
+from game_object.game_functions import colo
 
 
 class Game:
@@ -66,9 +67,10 @@ class Game:
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.ai_settings.background_image, (0, 0))
 
-        score = self.font.render(f'{self.count_a}:{self.count_b}', True, (255, 255, 255))
+        score = self.font.render(f'{self.count_a}:{self.count_b} {self.ball.status}', True, colo(self.ball.status))
         score_rect = score.get_rect(x=374, y=575)
         self.screen.blit(score, score_rect)
+    
         
         self.all_sprites.draw(self.screen)
 
@@ -117,12 +119,23 @@ class Game:
             pygame.display.update()
 
     def upp_score(self, player):
-        if player == 'a':
+        if player == 'L':
             self.count_a += 1
-        elif player == 'b':
+        elif player == 'Z':
             self.count_b += 1
 
         if self.count_a == self.ai_settings.max_score or self.count_b == self.ai_settings.max_score:
             print('ff')
             self.playing = False
+
+    def reset(self):
+        self.lebron.rect.x = self.ai_settings.pl1[0]
+        self.lebron.rect.y = self.ai_settings.pl1[1]
+        self.lebron.facing = 'b'
+
+        self.zak.rect.x = self.ai_settings.pl2[0]
+        self.zak.rect.y = self.ai_settings.pl2[1]
+        self.zak.facing = 'f'
+
+        self.ball.status = 'L' if self.ball.status == 'Z' else 'L'
 

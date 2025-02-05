@@ -19,8 +19,8 @@ class Zak(pygame.sprite.Sprite):
         self.ai_settings = ai_settings
         self.game = game
 
-        self.rect.x = 200
-        self.rect.y = 200
+        self.rect.x = 350
+        self.rect.y = 315
 
         self.moving_forward = False
         self.moving_back = False
@@ -30,7 +30,7 @@ class Zak(pygame.sprite.Sprite):
         self.speed = ai_settings.speed
 
 
-        self.facing = 'b'
+        self.facing = 'f'
 
         self.x_change = 0
         self.y_change = 0
@@ -40,14 +40,17 @@ class Zak(pygame.sprite.Sprite):
         self.ball_cnt = 1
 
         # включить или выключить анимацию
-        self.ball_status = True
+        self.ball_status = False
 
         self.mask = pygame.mask.from_surface(self.image)
 
+
     def update(self):
-        if pygame.Rect.colliderect(self.rect, self.game.ball.rect) and self.game.ball.moving == False and self.game.lebron.ball_status == False:
+        if pygame.sprite.collide_mask(self, self.game.ball) and (self.game.ball.moving == False or self.game.ball.status == 'L') and self.game.lebron.ball_status == False:
             self.ball_status = True
+            self.game.ball.moving = False
             self.game.ball.remove(self.game.all_sprites)
+            self.game.ball.status = 'Z'
         self.movement()
 
         # old_rect = self.rect.copy
@@ -59,8 +62,9 @@ class Zak(pygame.sprite.Sprite):
             self.rect.x -= self.x_change
             self.rect.y -= self.y_change
 
-            self.game.lebron.rect.x += self.x_change
-            self.game.lebron.rect.y += self.y_change
+            if self.y_change != 0 and self.x_change != 0:
+                self.game.lebron.rect.x += self.x_change // abs(self.x_change)
+                self.game.lebron.rect.y += self.y_change // abs(self.y_change)
         
 
 

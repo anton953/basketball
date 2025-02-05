@@ -20,7 +20,7 @@ class Lebron(pygame.sprite.Sprite):
         self.game = game
 
         self.rect.x = 350
-        self.rect.y = 350
+        self.rect.y = 445
 
         self.moving_forward = False
         self.moving_back = False
@@ -40,15 +40,17 @@ class Lebron(pygame.sprite.Sprite):
         self.ball_cnt = 1
 
         # включить или выключить анимацию
-        self.ball_status = False
+        self.ball_status = True
 
         self.mask = pygame.mask.from_surface(self.image)
 
 
     def update(self):
-        if pygame.Rect.colliderect(self.rect, self.game.ball.rect) and self.game.ball.moving == False and self.game.zak.ball_status == False:
+        if pygame.sprite.collide_mask(self, self.game.ball) and (self.game.ball.moving == False or self.game.ball.status == 'Z') and self.game.zak.ball_status == False:
             self.ball_status = True
+            self.game.ball.moving = False
             self.game.ball.remove(self.game.all_sprites)
+            self.game.ball.status = 'L'
         self.movement()
 
         # old_rect = self.rect.copy
