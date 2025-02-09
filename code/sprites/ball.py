@@ -108,7 +108,6 @@ class Ball(pygame.sprite.Sprite):
                 self.moving = False
                 self.game.upp_score(self.ownership)
 
-                self.game.reset()
 
             elif (self.direction_x != self.moving_x or self.direction_y != self.moving_y) and self.moving:
                 self.rect.x = self.cx
@@ -117,8 +116,6 @@ class Ball(pygame.sprite.Sprite):
                 self.moving = False
                 self.game.upp_score(self.ownership)
 
-                self.game.reset()
-                # self.status = 'L' if self.ownership == 'Z' else 'Z'
             
             self.x_bufer += self.px * self.game.ai_settings.ball_speed
             self.y_bufer += self.py * self.game.ai_settings.ball_speed

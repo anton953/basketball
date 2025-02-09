@@ -43,6 +43,6 @@ def texts(score):
 '''
 def colo(name):
     if name == 'L':
-        return (85, 37, 130)
+        return (103, 58, 183)
     if name == 'Z':
-        return 	(6, 25, 34)
+        return 	(222, 3, 3)

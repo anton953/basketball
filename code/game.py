@@ -18,7 +18,6 @@ class Game:
         pygame.init()
         self.size = self.width, self.height = self.ai_settings.screen_width, self.ai_settings.screen_height
         self.screen = pygame.display.set_mode(self.size)   
-        self.screen.blit(self.ai_settings.background_image, (0, 0))
         pygame.display.set_caption('Basketball')
         pygame.display.flip()
 
@@ -93,9 +92,10 @@ class Game:
 
     #  вводный экран
     def intro_screen(self):
+        print(self.screen.get_width)
         intro = True
 
-        title = self.font.render('Game', True, (0, 0, 0))
+        title = self.font.render('Basketball', True, (0, 0, 0))
         title_rect = title.get_rect(x=self.width // 2 - 60, y=self.height // 2 - 50)
 
         play_button = Button(self.width // 2 - 60, self.height // 2, 100, 50, ('white'), (0, 0, 0), 'play', 32)
@@ -112,9 +112,12 @@ class Game:
             if play_button.is_pressed(mouse_pos, mouse_pressed):
                 intro = False
 
-            self.screen.fill('blue')
+            self.screen.fill(pygame.Color((103, 58, 183)), (0, 0, self.width // 2, self.height))
+            self.screen.fill(pygame.Color((222, 3, 3)), (self.width // 2, self.height, self.width // 2, self.height))
+
             self.screen.blit(title, title_rect)
             self.screen.blit(play_button.image, play_button.rect)
+
             self.clock.tick(self.ai_settings.fps)
             pygame.display.update()
 
@@ -127,15 +130,4 @@ class Game:
         if self.count_a == self.ai_settings.max_score or self.count_b == self.ai_settings.max_score:
             print('ff')
             self.playing = False
-
-    def reset(self):
-        self.lebron.rect.x = self.ai_settings.pl1[0]
-        self.lebron.rect.y = self.ai_settings.pl1[1]
-        self.lebron.facing = 'b'
-
-        self.zak.rect.x = self.ai_settings.pl2[0]
-        self.zak.rect.y = self.ai_settings.pl2[1]
-        self.zak.facing = 'f'
-
-        self.ball.status = 'L' if self.ball.status == 'Z' else 'L'
 

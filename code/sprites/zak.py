@@ -46,11 +46,13 @@ class Zak(pygame.sprite.Sprite):
 
 
     def update(self):
+        if self.ball_status and self.rect.y > 445:
+            self.game.ball.status = 'Z'
+            
         if pygame.sprite.collide_mask(self, self.game.ball) and (self.game.ball.moving == False or self.game.ball.status == 'L') and self.game.lebron.ball_status == False:
             self.ball_status = True
             self.game.ball.moving = False
             self.game.ball.remove(self.game.all_sprites)
-            self.game.ball.status = 'Z'
         self.movement()
 
         # old_rect = self.rect.copy
@@ -61,11 +63,6 @@ class Zak(pygame.sprite.Sprite):
             # self.rect = old_rect
             self.rect.x -= self.x_change
             self.rect.y -= self.y_change
-
-            if self.y_change != 0 and self.x_change != 0:
-                self.game.lebron.rect.x += self.x_change // abs(self.x_change)
-                self.game.lebron.rect.y += self.y_change // abs(self.y_change)
-        
 
 
         self.x_change = 0

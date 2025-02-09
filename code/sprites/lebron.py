@@ -46,11 +46,12 @@ class Lebron(pygame.sprite.Sprite):
 
 
     def update(self):
+        if self.ball_status and self.rect.y > 445:
+            self.game.ball.status = 'L'
         if pygame.sprite.collide_mask(self, self.game.ball) and (self.game.ball.moving == False or self.game.ball.status == 'Z') and self.game.zak.ball_status == False:
             self.ball_status = True
             self.game.ball.moving = False
             self.game.ball.remove(self.game.all_sprites)
-            self.game.ball.status = 'L'
         self.movement()
 
         # old_rect = self.rect.copy
@@ -61,9 +62,7 @@ class Lebron(pygame.sprite.Sprite):
             # self.rect = old_rect
             self.rect.x -= self.x_change
             self.rect.y -= self.y_change
-
-            self.game.zak.rect.x += self.x_change
-            self.game.zak.rect.y += self.y_change
+        
 
         self.x_change = 0
         self.y_change = 0
