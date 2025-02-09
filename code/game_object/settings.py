@@ -21,6 +21,7 @@ class Settings():
         self.ball_speed = 2
 
         self.background_image = pygame.image.load('code/data/img/bord/bord_lay.png')
+        self.background_image_intro = 'bord/back_intro_screen.png'
 
         self.pl1 = (350, 445)
         self.pl2 = (350, 315)

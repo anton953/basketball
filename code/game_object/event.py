@@ -31,7 +31,7 @@ class EventGame:
         if event.key == pygame.K_a:
             self.game.lebron.moving_left = True
 
-        if event.key == pygame.K_e and self.game.ball.moving == False and self.game.lebron.ball_status:
+        if event.key == pygame.K_e and self.game.ball.moving == False and self.game.lebron.ball_status and self.game.ball.status  == 'L':
             self.game.all_sprites.add(self.game.ball)
 
             self.game.ball.rect.x = self.game.lebron.rect.x
@@ -54,7 +54,7 @@ class EventGame:
         if event.key == pygame.K_j:
             self.game.zak.moving_left = True
 
-        if event.key == pygame.K_o and self.game.ball.moving == False and self.game.zak.ball_status:
+        if event.key == pygame.K_o and self.game.ball.moving == False and self.game.zak.ball_status and self.game.ball.status == 'Z':
             self.game.all_sprites.add(self.game.ball)
 
             self.game.ball.rect.x = self.game.zak.rect.x

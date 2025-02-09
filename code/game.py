@@ -6,7 +6,8 @@ from game_object.settings import Settings
 from game_object.event import EventGame
 from sprites.ball import Ball
 from game_object.button import Button
-from game_object.game_functions import colo
+from game_object.game_functions import colo, load_image
+
 
 
 class Game:
@@ -96,9 +97,9 @@ class Game:
         intro = True
 
         title = self.font.render('Basketball', True, (0, 0, 0))
-        title_rect = title.get_rect(x=self.width // 2 - 60, y=self.height // 2 - 50)
+        title_rect = title.get_rect(x=self.width // 2 - 60, y=self.height // 2 - 300)
 
-        play_button = Button(self.width // 2 - 60, self.height // 2, 100, 50, ('white'), (0, 0, 0), 'play', 32)
+        play_button = Button(self.width // 2 - 60, self.height // 2 + 100, 100, 50, ('white'), (0, 0, 0), 'play', 32)
 
         while intro:
             for event in pygame.event.get():
@@ -112,8 +113,7 @@ class Game:
             if play_button.is_pressed(mouse_pos, mouse_pressed):
                 intro = False
 
-            self.screen.fill(pygame.Color((103, 58, 183)), (0, 0, self.width // 2, self.height))
-            self.screen.fill(pygame.Color((222, 3, 3)), (self.width // 2, self.height, self.width // 2, self.height))
+            self.screen.blit(load_image(self.ai_settings.background_image_intro), (0, 0))
 
             self.screen.blit(title, title_rect)
             self.screen.blit(play_button.image, play_button.rect)

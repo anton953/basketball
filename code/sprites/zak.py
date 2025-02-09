@@ -49,7 +49,7 @@ class Zak(pygame.sprite.Sprite):
         if self.ball_status and self.rect.y > 445:
             self.game.ball.status = 'Z'
             
-        if pygame.sprite.collide_mask(self, self.game.ball) and (self.game.ball.moving == False or self.game.ball.status == 'L') and self.game.lebron.ball_status == False:
+        if pygame.sprite.collide_mask(self, self.game.ball) and (self.game.ball.moving == False or self.game.ball.status == 'L') and self.game.lebron.ball_status == False and self.game.ball.ownership == 'L':
             self.ball_status = True
             self.game.ball.moving = False
             self.game.ball.remove(self.game.all_sprites)
