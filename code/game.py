@@ -121,7 +121,6 @@ class Game:
             self.clock.tick(self.ai_settings.fps)
             pygame.display.update()
 
-<<<<<<< HEAD
     def upp_score(self, player):
         if player == 'L':
             self.count_a += 1
@@ -131,10 +130,10 @@ class Game:
         if self.count_a == self.ai_settings.max_score or self.count_b == self.ai_settings.max_score:
             print('ff')
             self.playing = False
-=======
+
     def exit_screen(self):
         final = True
->>>>>>> origin/lebron_ball_animation
+
 
         final_title = self.font.render('Final', True, (0, 0, 0))
         final_title_rect = final_title.get_rect(x=self.width // 2 - 60, y=self.height // 2 - 50)

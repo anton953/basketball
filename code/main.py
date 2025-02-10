@@ -19,8 +19,8 @@ def main():
     while game.running:
         game.main()
         game.game_over()
+        game.exit_screen()
 
-    game.exit_screen()
     
     # закрытие окон
     pygame.quit()
