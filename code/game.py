@@ -84,8 +84,8 @@ class Game:
             self.events()
             self.update()
             self.draw()
-        self.running = False
-        pygame.quit()
+        #self.running = False
+        #pygame.quit()
 
     # окончание игры
     def game_over(self):
@@ -121,6 +121,7 @@ class Game:
             self.clock.tick(self.ai_settings.fps)
             pygame.display.update()
 
+<<<<<<< HEAD
     def upp_score(self, player):
         if player == 'L':
             self.count_a += 1
@@ -130,4 +131,32 @@ class Game:
         if self.count_a == self.ai_settings.max_score or self.count_b == self.ai_settings.max_score:
             print('ff')
             self.playing = False
+=======
+    def exit_screen(self):
+        final = True
+>>>>>>> origin/lebron_ball_animation
 
+        final_title = self.font.render('Final', True, (0, 0, 0))
+        final_title_rect = final_title.get_rect(x=self.width // 2 - 60, y=self.height // 2 - 50)
+
+        final_button = Button(self.width // 2 - 60, self.height // 2, 100, 50, ('white'), (0, 0, 0), 'exit_game', 32)
+
+        while final:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    final = False
+                    self.running = False
+
+            mouse_pos = pygame.mouse.get_pos()
+            mouse_pressed = pygame.mouse.get_pressed()
+
+            if final_button.is_pressed(mouse_pos, mouse_pressed):
+                final = False
+                self.running = False
+                pygame.quit()
+
+            self.screen.fill('blue')
+            self.screen.blit(final_title, final_title_rect)
+            self.screen.blit(final_button.image, final_button.rect)
+            self.clock.tick(self.ai_settings.fps)
+            pygame.display.update()
